@@ -1,8 +1,0 @@
-{
-    "terminal.integrated.env.windows": {
-        "DISCORD_TOKEN": "MTAyNTUwMzA1Nzk2MzkxMzIzNg.G5bbcM.rq8sunm_plgKQFXkisMTfXkocdll3smqhzCLCw"
-    },
-    "terminal.integrated.env.linux": {
-        "DISCORD_TOKEN": "MTAyNTUwMzA1Nzk2MzkxMzIzNg.G5bbcM.rq8sunm_plgKQFXkisMTfXkocdll3smqhzCLCw"
-    }
-}
