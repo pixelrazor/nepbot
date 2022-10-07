@@ -88,6 +88,8 @@ func (nb *NepBot) handlers() {
 	nb.s.AddHandler(nb.onReady())
 	nb.s.AddHandler(nb.onVoiceStateUpdate())
 	nb.s.Identify.Intents = discordgo.IntentGuildVoiceStates
+	nb.s.Debug = true
+	nb.s.LogLevel = discordgo.LogDebug
 }
 
 func (nb *NepBot) onReady() interface{} {
