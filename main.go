@@ -6,10 +6,9 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"net/http"
 	"os"
-	"os/signal"
 	"sync"
-	"syscall"
 	"time"
 
 	_ "embed"
@@ -46,30 +45,12 @@ func main() {
 		log.Fatalln("Failed to start bot:", err)
 	}
 
-	sig := make(chan os.Signal, 1)
-	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
-	<-sig
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "I'm alive")
+	})
+	http.ListenAndServe(":8086", nil)
 
 	log.Println("peace out")
-
-	/*for {
-		<-time.After(10 * time.Second)
-		fmt.Println("gonna talk")
-		vc, err := dg.ChannelVoiceJoin("159526587681734657", "159526588554280960", false, true)
-		if err != nil {
-			panic(err)
-		}
-		fmt.Println("set speaking true:", vc.Speaking(true))
-		dec := dca.NewDecoder(bytes.NewReader(ssd))
-		done := make(chan error)
-		dca.NewStream(dec, vc, done)
-		err = <-done
-		fmt.Println("done:", err)
-		fmt.Println("set speaking false:", vc.Speaking(false))
-		fmt.Println("speaking disconnect:", vc.Disconnect())
-
-	}*/
-
 }
 
 type NepBot struct {
